@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Weather in <span th:text="${city}">City</span></h1>
+    <form th:action="@{/weather}" method="get">
+        <input type="text" name="city" th:value="${city}" placeholder="Enter city">
+        <button type="submit">Get Weather</button>
+    </form>
+    <div th:if="${weatherData != null}" class="weather-info">
+        <div class="weather-card">
+            <h2>Current Weather</h2>
+            <div class="weather-details">
+                <p><strong>Temperature:</strong> <span th:text="${weatherData.current.temp_c}">Temp</span> °C</p>
+                <p><i class="wi wi-owm-200"></i> <span th:text="${weatherData.current.condition.text}">Description</span></p>
+                <p><strong>Wind:</strong> <span th:text="${weatherData.current.wind_kph}">Wind</span> km/h</p>
+                <p><strong>Humidity:</strong> <span th:text="${weatherData.current.humidity}">Humidity</span>%</p>
+                <p><strong>Precipitation:</strong> <span th:text="${weatherData.current.precip_mm}">Precipitation</span> mm</p>
+                <p><strong>Pressure:</strong> <span th:text="${weatherData.current.pressure_mb}">Pressure</span> mb</p>
+            </div>
+        </div>
+    </div>
+    <div th:if="${error}" class="error-message">
+        <p th:text="${error}">Error fetching weather data.</p>
+    </div>
+</div>
+</body>
+</html>
