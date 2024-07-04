@@ -19,8 +19,8 @@ Before running the application, ensure you have the following installed on your 
 If you have Git installed, you can clone the repository using the following command:
 
 ```sh
-git clone https://github.com/your-username/weather-app.git
-cd weather-app
+git clone https://github.com/Rabie-Lafkir/weather.git
+cd weather
 ```
 
 ### Build the Project
